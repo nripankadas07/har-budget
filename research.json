@@ -1,0 +1,73 @@
+{
+  "query": "HAR viewer",
+  "search_url": "https://api.github.com/search/repositories?q=HAR%20viewer&sort=stars&order=desc&per_page=10",
+  "observed_utc": "2026-10-06T06:12:48.529565+00:00",
+  "sort": "stars descending",
+  "scope": "bounded GitHub repository search, top 10; not exhaustive global ranking",
+  "comparables": [
+    {
+      "full_name": "janodvarko/harviewer",
+      "html_url": "https://github.com/janodvarko/harviewer",
+      "stargazers_count": 1076,
+      "pushed_at": "2022-11-25T22:54:43Z",
+      "default_branch": "master",
+      "license": null,
+      "observed_commit": "579969c6bb5537e0ddb358c6a273325eed16fe18",
+      "observed_commit_date": "2019-01-12T17:14:09Z"
+    },
+    {
+      "full_name": "ericduran/chromeHAR",
+      "html_url": "https://github.com/ericduran/chromeHAR",
+      "stargazers_count": 498,
+      "pushed_at": "2026-03-07T04:57:51Z",
+      "default_branch": "gh-pages",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "observed_commit": "a590b173709e6e6937734b92a75d8cad72ad344e",
+      "observed_commit_date": "2026-03-07T04:57:51Z"
+    },
+    {
+      "full_name": "micmro/PerfCascade",
+      "html_url": "https://github.com/micmro/PerfCascade",
+      "stargazers_count": 286,
+      "pushed_at": "2023-03-03T11:27:56Z",
+      "default_branch": "main",
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "observed_commit": "141951297cfdb13b9692066ba4e6f1c7eebf1248",
+      "observed_commit_date": "2022-12-10T22:54:01Z"
+    }
+  ],
+  "brief": {
+    "user": "Performance engineers reviewing exported browser HAR files in CI or offline.",
+    "pain": "Budgets need trustworthy transfer bytes and durations; treating unknown cache sizes as zero gives misleading results. HAR files can contain credentials and bodies.",
+    "outcome": "Groups HTTP(S) HAR requests by normalized origin, evaluates byte/request/p95 budgets and exposes unknown measurements.",
+    "command": "har-budget example.har --budget budget.json",
+    "module": "har_budget",
+    "fixtures": [
+      "example.har",
+      "budget.json"
+    ],
+    "comparables": [
+      "janodvarko/harviewer",
+      "ericduran/chromeHAR",
+      "micmro/PerfCascade"
+    ],
+    "limits": "HAR 1.2 HTTP(S) entries only, at most 50 MB and 100000 entries. _transferSize, when present, takes precedence; otherwise bodySize plus headersSize must both be known. This differs from decoded content size. p95 is nearest-rank over known request elapsed times, not page-load percentile across repeated runs. Unknowns fail by default; --allow-unknown retains visible counts. Empty capture fails. No network, capture collection, complete HAR schema validation or hardware benchmarks. Reports retain origin hostnames; they omit paths, queries, userinfo, cookies, headers and bodies.",
+    "discovery": "HAR/web-performance topics, reproducible synthetic budgets and privacy example.",
+    "acceptance": "Normalize origins and default ports; keep unknown sizes/times visible; honor cache zero and encoded transfer sizes; compute nearest-rank p95; support wildcard and origin override budgets; reject malformed/duplicate JSON and nonfinite metrics; omit request secrets.",
+    "alternative": "HarViewer, chromeHAR and PerfCascade visualize HAR activity. HarViewer code already distinguishes transferred versus uncompressed and unknown sizes. Our capability is a standalone budget/report contract, not a claim that viewers cannot analyze transfers.",
+    "evidence": "Read HarViewer EntrySizeInfoTip.js and docs. HarViewer issue #158 reports cache-related validation; chromeHAR issue #78 reports size sorting. Those are verified public issue reports, not requests for our budget tool; broader demand is inferred."
+  },
+  "portfolio_comparison": "Compared with 138 existing repository descriptions/README briefs and with these five candidates. Archive preflight rejected as overlap with wheel-sentinel and portable-tree. No forks, product subdivisions or cosmetic variants counted. These five have different input formats and user tasks."
+}
